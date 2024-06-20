@@ -11,26 +11,26 @@ contract ErrorHandlingDemo {
     }
 
     function setValue(uint _value) public {
-        require(_value > 0, "Value must be greater than zero"); // Ensure the value is greater than zero
+        require(_value > 0, "Value must be greater than zero"); 
         value = _value;
     }
 
     function divideValue(uint _divider) public view returns (uint) {
-        require(_divider > 0, "Divider must be greater than zero"); // Ensure divider is not zero
+        require(_divider > 0, "Divider must be greater than zero"); 
         uint result = value / _divider;
-        assert(result <= value); // Check that the result is logically correct
+        assert(result <= value); 
         return result;
     }
 
     function resetValue() public {
         if (value == 0) {
-            revert("Value is already zero"); // Revert with a message if value is already zero
+            revert("Value is already zero"); 
         }
         value = 0;
     }
 
     function onlyOwner() public view {
-        require(msg.sender == owner, "Caller is not the owner"); // Ensure the caller is the owner
+        require(msg.sender == owner, "Caller is not the owner");
     }
 
     function checkInvariant() public view {
